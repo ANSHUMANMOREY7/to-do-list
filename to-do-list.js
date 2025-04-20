@@ -17,3 +17,9 @@ if(savedData){
     localStorage.getItem(JSON.parse(tasks))
     // tasks=localStorage.getItem(JSON.parse(tasks))
 }
+function retriveData() {
+
+    const elementcontainer =document.getElementById("container")
+    
+
+}
