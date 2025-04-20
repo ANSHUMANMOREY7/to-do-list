@@ -11,3 +11,9 @@ function addtask() {
 tasks.push(tasklist);
 localStorage.setItem ("task" , JSON.stringify(tasks))
 }
+
+const savedData =localStorage.getItem( "tasks")
+if(savedData){
+    localStorage.getItem(JSON.parse(tasks))
+    // tasks=localStorage.getItem(JSON.parse(tasks))
+}
