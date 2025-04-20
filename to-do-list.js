@@ -8,5 +8,6 @@ function addtask() {
   task : elementInput.value ,
   priority:elementpriority.value || "low" 
  };
-
+tasks.push(tasklist);
+localStorage.setItem ("task" , JSON.stringify(tasks))
 }
