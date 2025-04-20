@@ -30,10 +30,12 @@
 
         }
 
-        .to-do-list{
+        .to-do-list {
             margin-top: 139px;
             margin-bottom: 139px;
+
         }
+
         .container {
             border: 0px solid black;
             border-radius: 10px;
@@ -41,9 +43,26 @@
             height: 60px;
             margin: 25px;
             padding: 10px;
-            
+            position: relative;
+
+
+
         }
-        .to-do-task{
+
+
+
+
+
+        .btn-delete {
+            padding: 2px 9px;
+            background-color: red;
+            border-radius: 5px;
+            position: absolute;
+            top: 45px;
+            left: 1232px;
+            z-index: -1;
+            cursor: pointer;
+
 
         }
 
@@ -99,15 +118,15 @@
     <div class="to-do-list">
 
         <div class="" id="container">
-            
+
         </div>
     </div>
     <div class="footer">
         <input type="text" class="input-box" id="input-box">
         <select class="priority" id="priority">
-            <option value="high">high</option>
-            <option value="medium">medium</option>
-            <option value="low">low</option>
+            <option  value="high">high</option>
+            <option  value="medium">medium</option>
+            <option  value="low">low</option>
         </select>
         <button onclick="addtask()" class="btn">Add Task</button>
     </div>
@@ -143,6 +162,7 @@
         <div class="container">
               <h3 class="to-do-task">${taskObj.task} </h3>
               <span class="to-do-priority"> ${taskObj.priority}</span>
+              <button class="btn-delete">delete</button>
               
           </div>
          `
