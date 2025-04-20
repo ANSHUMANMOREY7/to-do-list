@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>to do list</title>
-    <script src="to-do-list.js"></script>
+    <!-- <script src="to-do-list.js"></script> -->
     <style>
         * {
             padding: 0;
@@ -28,6 +28,9 @@
             font-size: 55px;
             color: gold;
 
+        }
+        .container{
+            border: 1px solid black;
         }
         .footer{
 
@@ -75,7 +78,7 @@
     <div class="header">
         <h1 class="heading">To Do List</h1>
     </div>
-    <div class="container">
+    <div class="container" id="container">
 
     </div>
     <div class="footer">
@@ -87,6 +90,45 @@
         </select>
         <button onclick="addtask()" class="btn">Add Task</button>
     </div>
+<script>
+    let tasks = [];
 
+function addtask() {
+    const elementInput = document.getElementById("input-box")
+    const elementpriority = document.getElementById("priority")
+
+    let tasklist = {
+        task: elementInput.value,
+        priority: elementpriority.value || "low"
+    };
+    tasks.push(tasklist);
+    localStorage.setItem("task", JSON.stringify(tasks))
+    retriveData(tasks);
+}
+
+const savedData = localStorage.getItem("task")
+if (savedData) {
+    tasks = JSON.parse(savedData)
+
+}
+function retriveData(tasklists) {
+
+    const elementcontainer = document.getElementById("container")
+    elementcontainer.innerHTML = "";
+    for (let i = 0; i < tasklists.length; i++) {
+        const taskObj = tasklists[i];
+
+        elementcontainer.innerHTML += `
+          <div class="container">
+              <h3 class="to-do-task">${taskObj.task} </h3>
+              <span class="to-do-priority"> ${taskObj.priority}</span>
+              
+          </div>
+         `
+
+        }
+    }
+    retriveData(tasks);
+</script>
 </body>
 </html>
