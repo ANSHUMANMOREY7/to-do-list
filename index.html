@@ -1,33 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>to do list</title>
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
 
         }
+
+        .header {
+            height: 130px;
+            background-color: black;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        .heading {
+
+            font-size: 55px;
+            color: gold;
+            
+        }
     </style>
 </head>
+
 <body>
     <div class="header">
-        <h1>To Do List</h1>
+        <h1 class="heading">To Do List</h1>
     </div>
     <div class="container">
 
     </div>
     <div class="footer">
         <input type="text" class="input-box">
-        <button onclick="addtask()">Add Task</button>
+        <button onclick="addtask()" class="btn">Add Task</button>
     </div>
-  
-    
+
+
 
     <script>
 
     </script>
 </body>
+
 </html>
