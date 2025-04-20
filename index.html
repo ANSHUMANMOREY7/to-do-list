@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>to do list</title>
-    <!-- <script src="to-do-list.js"></script> -->
+
     <style>
         * {
             padding: 0;
@@ -29,10 +29,15 @@
             color: gold;
 
         }
-        .container{
+
+        .to-do-list{
+            margin-top: 130px;
+        }
+        .container {
             border: 1px solid black;
         }
-        .footer{
+
+        .footer {
 
             position: fixed;
             bottom: 0px;
@@ -40,32 +45,35 @@
             background-color: black;
             width: 100%;
             display: flex;
-            justify-content:center;
+            justify-content: center;
             align-items: center;
 
         }
-        .input-box{
+
+        .input-box {
             padding: 10px;
             margin: 5px;
-            border:  black solid ;
+            border: black solid;
             border-radius: 10px;
             width: 250px;
             font-size: 17px;
-        
+
         }
-        .priority{
+
+        .priority {
             padding: 10px;
             margin: 5px;
-            border:  black solid ;
+            border: black solid;
             border-radius: 10px;
             width: 150px;
             font-size: 17px;
-            
+
         }
-        .btn{
+
+        .btn {
             padding: 10px;
             margin: 5px;
-            border:  black solid ;
+            border: black solid;
             border-radius: 10px;
             width: 150px;
             font-size: 17px;
@@ -78,8 +86,11 @@
     <div class="header">
         <h1 class="heading">To Do List</h1>
     </div>
-    <div class="container" id="container">
+    <div class="to-do-list">
 
+        <div class="container" id="container">
+            
+        </div>
     </div>
     <div class="footer">
         <input type="text" class="input-box" id="input-box">
@@ -90,45 +101,46 @@
         </select>
         <button onclick="addtask()" class="btn">Add Task</button>
     </div>
-<script>
-    let tasks = [];
+    <script>
+        let tasks = [];
 
-function addtask() {
-    const elementInput = document.getElementById("input-box")
-    const elementpriority = document.getElementById("priority")
+        function addtask() {
+            const elementInput = document.getElementById("input-box")
+            const elementpriority = document.getElementById("priority")
 
-    let tasklist = {
-        task: elementInput.value,
-        priority: elementpriority.value || "low"
-    };
-    tasks.push(tasklist);
-    localStorage.setItem("task", JSON.stringify(tasks))
-    retriveData(tasks);
-}
+            let tasklist = {
+                task: elementInput.value,
+                priority: elementpriority.value || "low"
+            };
+            tasks.push(tasklist);
+            localStorage.setItem("task", JSON.stringify(tasks))
+            retriveData(tasks);
+        }
 
-const savedData = localStorage.getItem("task")
-if (savedData) {
-    tasks = JSON.parse(savedData)
+        const savedData = localStorage.getItem("task")
+        if (savedData) {
+            tasks = JSON.parse(savedData)
 
-}
-function retriveData(tasklists) {
+        }
+        function retriveData(tasklists) {
 
-    const elementcontainer = document.getElementById("container")
-    elementcontainer.innerHTML = "";
-    for (let i = 0; i < tasklists.length; i++) {
-        const taskObj = tasklists[i];
+            const elementcontainer = document.getElementById("container")
+            elementcontainer.innerHTML = "";
+            for (let i = 0; i < tasklists.length; i++) {
+                const taskObj = tasklists[i];
 
-        elementcontainer.innerHTML += `
-          <div class="container">
+                elementcontainer.innerHTML += `
+        <div class="container">
               <h3 class="to-do-task">${taskObj.task} </h3>
               <span class="to-do-priority"> ${taskObj.priority}</span>
               
           </div>
          `
 
+            }
         }
-    }
-    retriveData(tasks);
-</script>
+        retriveData(tasks);
+    </script>
 </body>
+
 </html>
