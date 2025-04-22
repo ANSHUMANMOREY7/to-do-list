@@ -21,7 +21,7 @@
             align-items: center;
             position: fixed;
             top: 0px;
-
+            z-index: 1000;
         }
 
         .heading {
@@ -33,6 +33,7 @@
         .to-do-list {
             margin-top: 139px;
             margin-bottom: 139px;
+            
 
         }
 
@@ -44,12 +45,35 @@
             margin: 25px;
             padding: 10px;
             position: relative;
+            
+            
 
 
 
         }
 
+        .to-do-task {
+            font-size: 25px;
+            position: absolute;
+            
 
+        }
+        
+        .to-do-priority {
+            z-index: -1px;
+            padding: 2px 9px;
+            font-size: 16px;
+            position: absolute;
+            top: 45px;
+            left: 1155px;
+            background-color: var(--accent-color);
+            border: 1px solid black;
+            border-radius:5px;
+            width:48px;
+            cursor: pointer;
+            text-align: center;
+            
+        }
 
 
 
@@ -124,9 +148,9 @@
     <div class="footer">
         <input type="text" class="input-box" id="input-box">
         <select class="priority" id="priority">
-            <option  value="high">high</option>
-            <option  value="medium">medium</option>
-            <option  value="low">low</option>
+            <option style="accent-color: red;" value="high" >high</option>
+            <option style="accent-color: yellow;" value="medium">medium</option>
+            <option style="accent-color: green;" value="low">low</option>
         </select>
         <button onclick="addtask()" class="btn">Add Task</button>
     </div>
@@ -141,7 +165,7 @@
                 task: elementInput.value,
                 priority: elementpriority.value || "low"
             };
-            tasks.push(tasklist);
+            tasks.unshift(tasklist);
             localStorage.setItem("task", JSON.stringify(tasks))
             retriveData(tasks);
         }
