@@ -181,6 +181,7 @@
                 alert("Please enter a task.");
                 return;
             }
+            
 
             tasks.unshift(tasklist);
             localStorage.setItem("task", JSON.stringify(tasks))
@@ -207,8 +208,8 @@
               
           </div>
          `
-
-            }
+         
+        }
         }
 
         function deletetask(taskindex) {
