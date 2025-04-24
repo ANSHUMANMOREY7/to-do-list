@@ -60,7 +60,6 @@
         }
         
         .to-do-priority {
-            z-index: -1px;
             padding: 2px 9px;
             font-size: 16px;
             position: absolute;
@@ -78,13 +77,11 @@
 
 
         .btn-delete {
-            padding: 2px 9px;
-            background-color: red;
-            border-radius: 5px;
+            height: 40px;
             position: absolute;
-            top: 45px;
+            top: 23px;
             left: 1232px;
-            z-index: -1;
+            z-index: -1px;
             cursor: pointer;
 
 
@@ -138,13 +135,14 @@
 <body>
     <div class="header">
         <h1 class="heading">To Do List</h1>
+  
     </div>
-    <div class="to-do-list">
 
-        <div class="" id="container">
+        <div class="to-do-list" id="container">
+           
 
         </div>
-    </div>
+
     <div class="footer">
         <input type="text" class="input-box" id="input-box">
         <select class="priority" id="priority">
@@ -153,9 +151,11 @@
             <option style="accent-color: green;" value="low">low</option>
         </select>
         <button onclick="addtask()" class="btn">Add Task</button>
+    
     </div>
     <script>
         let tasks = [];
+    
 
         function addtask() {
             const elementInput = document.getElementById("input-box")
@@ -186,13 +186,22 @@
         <div class="container">
               <h3 class="to-do-task">${taskObj.task} </h3>
               <span class="to-do-priority"> ${taskObj.priority}</span>
-              <button class="btn-delete">delete</button>
+              <img src ="bin.png" onclick="deletetask(${i})"class="btn-delete">
               
           </div>
          `
 
             }
         }
+        
+        function deletetask(taskindex) {
+          tasks.splice(taskindex , 1)
+          localStorage.setItem("tasks" , JSON.stringify(tasks));
+          retriveData(tasks);
+
+        }
+
+
         retriveData(tasks);
     </script>
 </body>
