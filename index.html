@@ -33,7 +33,7 @@
         .to-do-list {
             margin-top: 139px;
             margin-bottom: 139px;
-            
+
 
         }
 
@@ -45,8 +45,10 @@
             margin: 25px;
             padding: 10px;
             position: relative;
-            
-            
+
+
+
+
 
 
 
@@ -59,22 +61,21 @@
             padding: 5px;
 
         }
-        
+
         .to-do-priority {
             padding: 2px 9px;
             font-size: 16px;
             position: absolute;
-            top: 30px; 
+            top: 30px;
             left: 1295px;
             background-color: gold;
             border: 0px solid black;
             box-shadow: 0 0 8px 2px rgb(161, 151, 94);
             padding: 4px;
-            border-radius:5px;
-            width:54px;
-            cursor: pointer;
+            border-radius: 5px;
+            width: 54px;
             text-align: center;
-            
+            cursor: context-menu;
         }
 
 
@@ -138,27 +139,27 @@
 <body>
     <div class="header">
         <h1 class="heading">To Do List</h1>
-  
+
     </div>
 
-        <div class="to-do-list" id="container">
-           
+    <div class="to-do-list" id="container">
 
-        </div>
+
+    </div>
 
     <div class="footer">
         <input type="text" class="input-box" id="input-box">
         <select class="priority" id="priority">
-            <option  value="high" >high</option>
-            <option  value="medium">medium</option>
-            <option  value="low">low</option>
+            <option value="high">high</option>
+            <option value="medium">medium</option>
+            <option value="low">low</option>
         </select>
         <button onclick="addtask()" class="btn">Add Task</button>
-    
+
     </div>
     <script>
         let tasks = [];
-    
+
 
         function addtask() {
             const elementInput = document.getElementById("input-box")
@@ -168,6 +169,11 @@
                 task: elementInput.value,
                 priority: elementpriority.value || "low"
             };
+            if (elementInput.value == "") {
+                alert("Please enter a task.");
+                return;
+            }
+
             tasks.unshift(tasklist);
             localStorage.setItem("task", JSON.stringify(tasks))
             retriveData(tasks);
@@ -196,11 +202,11 @@
 
             }
         }
-        
+
         function deletetask(taskindex) {
-          tasks.splice(taskindex , 1)
-          localStorage.setItem("tasks" , JSON.stringify(tasks));
-          retriveData(tasks);
+            tasks.splice(taskindex, 1)
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            retriveData(tasks);
 
         }
 
