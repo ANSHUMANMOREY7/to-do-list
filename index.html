@@ -111,13 +111,15 @@
             border-radius: 10px;
             width: 250px;
             font-size: 17px;
-            
+
         }
+
         .input-box:focus {
             outline: none;
             border: 2px solid black;
-            
+
         }
+
         .priority {
             padding: 10px;
             margin: 5px;
@@ -156,8 +158,8 @@
     </div>
 
     <div class="footer">
-        <input type="text" class="input-box" id="input-box"  placeholder="Enter a task" />
-               <select class="priority" id="priority">
+        <input type="text" class="input-box" id="input-box" placeholder="Enter a task" />
+        <select class="priority" id="priority">
             <option value="high">high</option>
             <option value="medium">medium</option>
             <option value="low">low</option>
@@ -181,7 +183,7 @@
                 alert("Please enter a task.");
                 return;
             }
-            
+
 
             tasks.unshift(tasklist);
             localStorage.setItem("task", JSON.stringify(tasks))
@@ -208,8 +210,8 @@
               
           </div>
          `
-         
-        }
+
+            }
         }
 
         function deletetask(taskindex) {
@@ -218,9 +220,18 @@
             retriveData(tasks);
 
         }
-
-
         retriveData(tasks);
+        // event listner for enter button
+        const inputbox = document.getElementById("input-box")
+        inputbox.addEventListener("keypress", function (event) {
+            if (event.key === "Enter")
+        {
+                event.preventDefault();
+                addtask();
+        }
+            }) 
+
+   
     </script>
 </body>
 
